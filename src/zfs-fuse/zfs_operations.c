@@ -1442,7 +1442,12 @@ static int zfsfuse_write(fuse_req_t req, fuse_ino_t ino, const char *buf, size_t
 static void zfsfuse_write_helper(fuse_req_t req, fuse_ino_t ino, const char *buf, size_t size, off_t off, struct fuse_file_info *fi)
 {
 	fuse_ino_t real_ino = ino == 1 ? 3 : ino;
+    {
+        fprintf(stderr, "%s io off %llu size %llu\n", __FUNCTION__,
+                (unsigned long long)off,
+                (unsigned long long)size);
 
+    }
 	int error = zfsfuse_write(req, real_ino, buf, size, off, fi);
 	if(error)
 		fuse_reply_err(req, error);

@@ -212,6 +212,10 @@ vdev_file_io_start(zio_t *zio)
 
 		zio->io_aio.data = zio;
 
+        fprintf(stderr, "%s fd %d io off %llu size %llu\n", __FUNCTION__,
+                vf->vf_vnode->v_fd,
+                (unsigned long long)zio->io_offset,
+                (unsigned long long)zio->io_size);
 		do {
 			error = io_submit(zio->io_aio_ctx->zac_ctx, 1, &iocbp);
 		} while (error == -EINTR);
