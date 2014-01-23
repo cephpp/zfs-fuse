@@ -483,7 +483,7 @@ zio_create(zio_t *pio, spa_t *spa, uint64_t txg, const blkptr_t *bp,
 	zio_t *zio;
 
 	ASSERT3U(size, <=, SPA_MAXBLOCKSIZE);
-	ASSERT(P2PHASE(size, SPA_MINBLOCKSIZE) == 0);
+/*	ASSERT(P2PHASE(size, SPA_MINBLOCKSIZE) == 0);*/
 	ASSERT(P2PHASE(offset, SPA_MINBLOCKSIZE) == 0);
 
 	ASSERT(!vd || spa_config_held(spa, SCL_STATE_ALL, RW_READER));

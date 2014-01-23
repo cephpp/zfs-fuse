@@ -671,7 +671,7 @@ static space_map_ops_t metaslab_ndf_ops = {
 	metaslab_ndf_fragmented
 };
 
-space_map_ops_t *zfs_metaslab_ops = &metaslab_df_ops;
+space_map_ops_t *zfs_metaslab_ops = &metaslab_cdf_ops/*&metaslab_df_ops*/;
 
 /*
  * ==========================================================================
@@ -1382,7 +1382,8 @@ top:
 				mc->mc_rotor = mg->mg_next;
 				mc->mc_aliquot = 0;
 			}
-
+            fprintf(stderr, "%s: offset %lx size %ld\n", __FUNCTION__, 
+                    offset, asize);
 			DVA_SET_VDEV(&dva[d], vd->vdev_id);
 			DVA_SET_OFFSET(&dva[d], offset);
 			DVA_SET_GANG(&dva[d], !!(flags & METASLAB_GANG_HEADER));

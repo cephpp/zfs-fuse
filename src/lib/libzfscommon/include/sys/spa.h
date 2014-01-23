@@ -83,7 +83,7 @@ struct dsl_pool;
  * We could go higher, but the benefits are near-zero and the cost
  * of COWing a giant block to modify one byte would become excessive.
  */
-#define	SPA_MINBLOCKSHIFT	9
+#define	SPA_MINBLOCKSHIFT	10
 #define	SPA_MAXBLOCKSHIFT	17
 #define	SPA_MINBLOCKSIZE	(1ULL << SPA_MINBLOCKSHIFT)
 #define	SPA_MAXBLOCKSIZE	(1ULL << SPA_MAXBLOCKSHIFT)
